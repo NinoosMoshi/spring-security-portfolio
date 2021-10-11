@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,8 +22,8 @@ public class Authorities {
     @Column(name = "role_name")
     private String roleName;
 
-
-
+    @ManyToMany(mappedBy = "authorities")
+    private Set<User> users = new HashSet<>();
 
 
 
