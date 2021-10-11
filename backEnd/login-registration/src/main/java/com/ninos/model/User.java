@@ -1,8 +1,6 @@
 package com.ninos.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,7 +8,8 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "user")
 public class User {
@@ -30,9 +29,9 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-       name = "user_role",
-       joinColumns = {@JoinColumn(name = "user_id")},
-       inverseJoinColumns = {@JoinColumn(name = "authorities_id")}
+            name = "user_role",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authorities_id")}
     )
     private Set<Authorities> authorities = new HashSet<>();
 
