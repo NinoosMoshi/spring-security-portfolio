@@ -1,27 +1,27 @@
 package com.ninos.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ninos.jwt.JwtAuthenticationFilter;
+import com.ninos.jwt.JwtLogin;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
 public class LoginRegistrationController {
 
-    @GetMapping("/data")
-    public String home(){
-        return "My Data";
+    private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+    @Autowired
+    public LoginRegistrationController(JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
-    @GetMapping("/user")
-    public String user(){
-        return "My Data user";
+
+    // http://localhost:8080/signin
+    @PostMapping("/signin")
+    public String logIn(@RequestBody JwtLogin jwtLogin){
+        return jwtAuthenticationFilter.login(jwtLogin);
     }
 
-    @GetMapping("/admin")
-    public String admin(){
-        return "My Data admin";
-    }
 
 
 

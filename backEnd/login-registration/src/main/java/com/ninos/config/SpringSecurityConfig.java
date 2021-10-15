@@ -4,6 +4,7 @@ import com.ninos.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.BeanIds;
@@ -31,12 +32,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user").hasRole("user")
-                .antMatchers("/api/admin").hasRole("admin")
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()   //allow CORS option calls
+                .antMatchers("/signin").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .permitAll();
+                .httpBasic();
 
     }
 
