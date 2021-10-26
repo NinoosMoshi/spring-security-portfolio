@@ -1,14 +1,14 @@
-
-
 .card{
-  height: 515px;
+  margin-top: 95px;
+  height: 305px;
   width: 400px;
   background-color: #404041;
-  margin-bottom: 140px;
 }
 
+
 .input-field{
-  margin-bottom: 20px;
+
+  margin-top: 20px;
 }
 
 .input-field span{
@@ -97,7 +97,6 @@ input:focus{
 
 .links{
   color: white;
-  cursor: pointer;
 }
 
 .links a{
@@ -107,16 +106,6 @@ input:focus{
 {
   margin-top: 90px;
 }
-
-
-/* .alert
-{
-  position: absolute;
-  left: 360px;
-  width: 200px;
-} */
-
-
 
 
 .emailVal span
@@ -140,10 +129,4 @@ input:focus{
 
 .submitVal{
   margin-top: 25px;
-}
-
-
-.forgot-password{
- color: #ffc107;
- text-decoration: none;
 }
